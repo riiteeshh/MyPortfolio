@@ -63,15 +63,28 @@ export default function LandingPage() {
           </Button>
         </div>
         <div>
-          {/* <div className="flex justify-center items-center">
-            <Image
+          <div className="flex justify-center items-center gap-6">
+            {/* <Image
               alt="R P"
-              width="80"
-              height="80"
-              className="animate-[spinX_3s_linear_infinite]"
-              src="/images/main-logo-white.png"
+              width="110"
+              height="110"
+              src="/images/tech-guy.png"
+              className="-rotate-45 animate-[spinX_3s_linear_infinite]"
+            /> */}
+             <Image
+              alt="R P"
+              width="150"
+              height="150"
+              src="/images/tech-guy.png"
             />
-          </div> */}
+             {/* <Image
+              alt="R P"
+              width="110"
+              height="110"
+              src="/images/tech-guy.png"
+              className="rotate-45 animate-[spinX_3s_linear_infinite]"
+            /> */}
+          </div>
           <p className="text-center text-white font-extrabold text-5xl transition-all duration-300 hover:scale-110 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-transparent hover:bg-clip-text">
             Namaste - It&apos;s Ritesh
           </p>
