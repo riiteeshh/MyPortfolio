@@ -76,6 +76,7 @@ export default function LandingPage() {
               width="150"
               height="150"
               src="/images/tech-guy.png"
+              className="hover:scale-115 transition-all hover:animate-pulse"
             />
              {/* <Image
               alt="R P"
