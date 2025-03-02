@@ -2,13 +2,14 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 export default function LandingPage() {
   const text: string[] = ["MOBILE APP DEVELOPER", "WEB DEVELOPER"];
   function delay(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
   const [streamedText, setStreamedText] = useState("");
-
+  const router = useRouter()
   async function* streamText(textArray: Array<string>) {
     while (true) {
       for (const text of textArray) {
@@ -28,24 +29,16 @@ export default function LandingPage() {
   }, []); //eslint-disable-line
 
   return (
-    <div className="w-full h-[100dvh] flex justify-between items-center px-10 py-10 relative cursor-default bg-accent-foreground">
+    <div className="w-full h-[100dvh] flex justify-between items-center px-10 py-10 relative cursor-default ">
       {/* About Button */}
-      <div className="absolute top-0  transform -translate-x-1/2">
-        <Image
-          alt="R P"
-          width="80"
-          height="80"
-          className="animate-[spinX_3s_linear_infinite]"
-          src="/images/main-logo-white.png"
-        />
-      </div>
       <div className="relative">
         <Button
+        onClick={()=>router.push("/contact")}
           variant="ghost"
           className="transition-all duration-300 absolute left-1/2 transform -translate-x-1/2 rotate-90 hover:bg-transparent p-0 m-0"
         >
           <span className="text-white text-xl font-bold block transition-all duration-300 hover:scale-150 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-transparent hover:bg-clip-text">
-            About
+            Contact
           </span>
         </Button>
       </div>
