@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -25,9 +24,9 @@ export default function ContactForm() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-black text-white px-6">
       <div className="w-full max-w-2xl bg-black p-8 rounded-lg shadow-lg">
-          <h2 className="text-3xl font-bold text-center mb-6">
-            Let&apos;s Get Connected
-          </h2>
+        <h2 className="text-3xl font-bold text-center mb-6">
+          Let&apos;s Get Connected
+        </h2>
         <p className="text-center mb-6 text-gray-400">
           For all enquiries, please email me using the form below.
         </p>

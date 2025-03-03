@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 export default function LandingPage() {
   const text: string[] = ["MOBILE APP DEVELOPER", "WEB DEVELOPER"];
   function delay(ms: number) {
@@ -31,6 +32,31 @@ export default function LandingPage() {
   return (
     <div className="w-full h-[100dvh] flex justify-between items-center px-10 py-10 relative cursor-default ">
       {/* About Button */}
+      <div className="flex gap-4 absolute top-0 transform right-10 -translate-x-1/2">
+          <Link
+            target="_blank"
+            href="https://www.linkedin.com/in/riteshpandey47"
+          >
+            <Image
+              width={30}
+              height={30}
+              key="linkedin"
+              alt="linkedin"
+              className="pt-10 hover:scale-125 transition-all"
+              src="/images/linkedin.svg"
+            />
+          </Link>
+          <Link target="_blank" href="https://github.com/riiteeshh">
+            <Image
+              width={30}
+              height={30}
+              key="git"
+              alt="github"
+              className="pt-10 animate-[spinX_3s_linear_infinite] hover:scale-125 transition-all"
+              src="/images/github.svg"
+            />
+          </Link>
+        </div>
       <div className="relative">
         <Button
         onClick={()=>router.push("/contact")}
@@ -88,6 +114,7 @@ export default function LandingPage() {
         </div>
         <div className="relative bottom-10">
           <Button
+          onClick={()=>{router.push("/skill")}}
             variant="ghost"
             className="transition-all flex absolute duration-300 left-1/2 transform -translate-x-1/2 hover:bg-transparent p-0 m-0"
           >
