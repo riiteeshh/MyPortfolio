@@ -57,7 +57,7 @@ export default function LandingPage() {
           onClick={() => {
             window.open("/files/my-cv.pdf", "_blank");
           }}
-          className="text-white bg-red-500 hover:bg-red-500 mt-10 mr-0"
+          className="text-white bg-red-500 hover:bg-red-500 mt-9 mr-0"
         >
           My Resume
         </Button>
