@@ -53,6 +53,14 @@ export default function LandingPage() {
             src="/images/github.svg"
           />
         </Link>
+        <Button
+          onClick={() => {
+            window.open("/files/my-cv.pdf", "_blank");
+          }}
+          className="text-white bg-red-500 hover:bg-red-500 mt-10 mr-0"
+        >
+          My Resume
+        </Button>
       </div>
       <div className="relative">
         <Button

@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function AboutPage() {
@@ -35,9 +36,12 @@ export default function AboutPage() {
       <div className="text-center mb-20 italic group">
         <p className="text-gray-400">
           Hi, my name is{" "}
-          <span className="font-bold  text-red-500 group-hover:animate-pulse">Ritesh Pandey</span>, and I
-          am a passionate web and mobile app developer. I have experience in
-          building high-quality applications using modern technologies such as
+          <span className="font-bold  text-red-500 group-hover:animate-pulse">
+            Ritesh Pandey
+          </span>
+          , and I am a passionate web and mobile app developer. I have
+          experience in building high-quality applications using modern
+          technologies such as
           <span className="font-semibold">
             Flutter, JavaScript, Next.js, TypeScript, HTML, CSS, and Tailwind
             CSS
