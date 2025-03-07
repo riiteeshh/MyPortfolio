@@ -5,6 +5,6 @@ export const metadata: Metadata = {
     title: "Skills",
     description: "My skills",
   };
-export default function Contacts(){
+export default function Skills(){
     return <SkillPage/>
 }

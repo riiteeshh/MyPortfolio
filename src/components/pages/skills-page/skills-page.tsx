@@ -16,12 +16,8 @@ export default function SkillPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white px-6">
-      <div>
-        <h2 className="text-3xl font-bold text-center text-white italic">
-          Foundation
-        </h2>
-        <hr className="h-0.5 w-full bg-white mt-2 px-2 pt-0" />
-      </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">SKILLS</h1>
+
       <div className="flex gap-20 mt-10">
         {skills.map((skill, index) => (
           <div

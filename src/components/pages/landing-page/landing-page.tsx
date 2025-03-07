@@ -10,7 +10,7 @@ export default function LandingPage() {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
   const [streamedText, setStreamedText] = useState("");
-  const router = useRouter()
+  const router = useRouter();
   async function* streamText(textArray: Array<string>) {
     while (true) {
       for (const text of textArray) {
@@ -33,33 +33,30 @@ export default function LandingPage() {
     <div className="w-full h-[100dvh] flex justify-between items-center px-10 py-10 relative cursor-default ">
       {/* About Button */}
       <div className="flex gap-4 absolute top-0 transform right-10 -translate-x-1/2">
-          <Link
-            target="_blank"
-            href="https://www.linkedin.com/in/riteshpandey47"
-          >
-            <Image
-              width={30}
-              height={30}
-              key="linkedin"
-              alt="linkedin"
-              className="pt-10 hover:scale-125 transition-all"
-              src="/images/linkedin.svg"
-            />
-          </Link>
-          <Link target="_blank" href="https://github.com/riiteeshh">
-            <Image
-              width={30}
-              height={30}
-              key="git"
-              alt="github"
-              className="pt-10 animate-[spinX_3s_linear_infinite] hover:scale-125 transition-all"
-              src="/images/github.svg"
-            />
-          </Link>
-        </div>
+        <Link target="_blank" href="https://www.linkedin.com/in/riteshpandey47">
+          <Image
+            width={30}
+            height={30}
+            key="linkedin"
+            alt="linkedin"
+            className="pt-10 hover:scale-125 transition-all"
+            src="/images/linkedin.svg"
+          />
+        </Link>
+        <Link target="_blank" href="https://github.com/riiteeshh">
+          <Image
+            width={30}
+            height={30}
+            key="git"
+            alt="github"
+            className="pt-10 animate-[spinX_3s_linear_infinite] hover:scale-125 transition-all"
+            src="/images/github.svg"
+          />
+        </Link>
+      </div>
       <div className="relative">
         <Button
-        onClick={()=>router.push("/contact")}
+          onClick={() => router.push("/contact")}
           variant="ghost"
           className="transition-all duration-300 absolute left-1/2 transform -translate-x-1/2 rotate-90 hover:bg-transparent p-0 m-0"
         >
@@ -73,11 +70,12 @@ export default function LandingPage() {
       <div className="flex-col flex justify-between h-full">
         <div className="relative">
           <Button
+            onClick={() => router.push("/about")}
             variant="ghost"
             className="transition-all duration-300 absolute left-1/2 transform -translate-x-1/2 hover:bg-transparent p-0 m-0"
           >
             <span className="text-white text-xl font-bold block transition-all duration-300 hover:scale-150 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-transparent hover:bg-clip-text">
-              Experience
+              About
             </span>
           </Button>
         </div>
@@ -90,14 +88,14 @@ export default function LandingPage() {
               src="/images/tech-guy.png"
               className="-rotate-45 animate-[spinX_3s_linear_infinite]"
             /> */}
-             <Image
+            <Image
               alt="R P"
               width="150"
               height="150"
               src="/images/tech-guy.png"
               className="hover:scale-115 transition-all hover:animate-pulse"
             />
-             {/* <Image
+            {/* <Image
               alt="R P"
               width="110"
               height="110"
@@ -114,7 +112,9 @@ export default function LandingPage() {
         </div>
         <div className="relative bottom-10">
           <Button
-          onClick={()=>{router.push("/skill")}}
+            onClick={() => {
+              router.push("/skill");
+            }}
             variant="ghost"
             className="transition-all flex absolute duration-300 left-1/2 transform -translate-x-1/2 hover:bg-transparent p-0 m-0"
           >
