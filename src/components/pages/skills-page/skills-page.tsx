@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function SkillPage() {
   const skills = [
@@ -24,9 +27,24 @@ export default function SkillPage() {
     { src: "/images/confluence.svg", name: "Confluence" },
     { src: "/images/linux.svg", name: "Linux" },
     { src: "/images/vs-code.svg", name: "VS Code" },
-    
   ];
+  function delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+  const [skillsBounce, setSkillsBounce] = useState(-1);
+  async function skillBounce() {
+    while (true) {
+      for (let i = 0; i <= skills.length; i++) {
+        await delay(1500); // Delay of 0.5 second
+        setSkillsBounce(i); // Clear text after one cycle
+      }
+      setSkillsBounce(-1);
+    }
+  }
 
+  useEffect(() => {
+    skillBounce();
+  }, []); //eslint-disable-line
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white px-6">
       <h1 className="text-3xl md:text-3xl font-extrabold  text-center mb-4">
@@ -43,7 +61,9 @@ export default function SkillPage() {
               width={80}
               height={80}
               alt={skill.name}
-              className="transition-transform"
+              className={`transition-transform ${
+                skillsBounce === index && "animate-pulse scale-3d"
+              }`}
               src={skill.src}
             />
             <p className="mt-2 text-sm font-bold transition-all">
