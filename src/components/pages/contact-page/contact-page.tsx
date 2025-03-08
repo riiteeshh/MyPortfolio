@@ -29,7 +29,7 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       });
       setIsSending(false);
-      if (res.status === 200)
+      if (res.status !== 200) throw new Error("Failed")
         toast.success("Email sent successfully")
 
         setFormData({
