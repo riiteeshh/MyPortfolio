@@ -127,7 +127,7 @@ export default function LandingPage() {
             className="transition-all flex absolute duration-300 left-1/2 transform -translate-x-1/2 hover:bg-transparent p-0 m-0"
           >
             <span className="text-white text-xl font-bold block transition-all duration-300 hover:scale-150 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-500 hover:text-transparent hover:bg-clip-text">
-              Skill
+              Skills
             </span>
           </Button>
         </div>
