@@ -45,7 +45,6 @@ export default function ContactForm() {
     } finally {
       setIsSending(false);
     }
-    console.log("Form Data Submitted: ", formData);
   };
 
   return (
