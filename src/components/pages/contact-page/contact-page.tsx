@@ -24,10 +24,6 @@ export default function ContactForm() {
     e.preventDefault();
     try {
       setIsSending(true);
-      console.log(process.env.NEXT_PUBLIC_ELASTICEMAIL_API_KEY);
-      console.log(process.env.NEXT_PUBLIC_FROM);
-      console.log(process.env.NEXT_PUBLIC_EMAIL);
-
       const res = await axios.post("/api/send-mail", formData, {
         headers: {
           "Content-Type": "application/json",
@@ -43,9 +39,9 @@ export default function ContactForm() {
         subject: "",
         message: "",
       });
-    } catch (error: unknown) {
+    } catch {
       setIsSending(false);
-      toast.error("Some eror occured while sending email", error ? error : "");
+      toast.error("Some eror occured while sending email")
     } finally {
       setIsSending(false);
     }
