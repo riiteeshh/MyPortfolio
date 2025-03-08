@@ -7,6 +7,7 @@ export default function SkillPage() {
     { src: "/images/html-5.svg", name: "HTML" },
     { src: "/images/css-3.svg", name: "CSS" },
     { src: "/images/js.svg", name: "JavaScript" },
+    { src: "/images/type-script.svg", name: "TypeScript" },
     { src: "/images/dart.svg", name: "Dart" },
     { src: "/images/python.svg", name: "Python" },
     { src: "/images/c.svg", name: "C" },
@@ -23,6 +24,7 @@ export default function SkillPage() {
     { src: "/images/confluence.svg", name: "Confluence" },
     { src: "/images/linux.svg", name: "Linux" },
     { src: "/images/vs-code.svg", name: "VS Code" },
+    
   ];
 
   return (
