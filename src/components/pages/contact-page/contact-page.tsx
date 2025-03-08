@@ -2,22 +2,49 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import type { ContactForm } from "@/app/types";
+import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactForm>({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-
+  const [isSending, setIsSending] = useState(false);
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    try {
+      setIsSending(true);
+      const res = await fetch("/api/send-mail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      setIsSending(false);
+      if (res.status === 200)
+        toast.success("Email sent successfully")
+
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+    } catch {
+      setIsSending(false);
+      toast.error("Some eror occured while sending email")
+
+    } finally {
+      setIsSending(false);
+    }
     console.log("Form Data Submitted: ", formData);
   };
 
@@ -69,10 +96,16 @@ export default function ContactForm() {
             required
           />
           <Button
+            disabled={isSending}
             type="submit"
             className="w-full bg-[#E63946] text-white py-3 rounded-md font-bold hover:bg-red-600 transition-all"
           >
-            Submit
+            <div className="gap-2 flex">
+              {isSending && (
+                <Loader2 className="animate-spin self-center" size={18} />
+              )}
+              Submit
+            </div>
           </Button>
         </form>
       </div>
