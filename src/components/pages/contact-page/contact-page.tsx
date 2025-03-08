@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import type { ContactForm } from "@/app/types";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import axios from "axios";
 export default function ContactForm() {
   const [formData, setFormData] = useState<ContactForm>({
     name: "",
@@ -27,10 +28,10 @@ export default function ContactForm() {
       console.log(process.env.NEXT_PUBLIC_FROM);
       console.log(process.env.NEXT_PUBLIC_EMAIL);
 
-      const res = await fetch("/api/send-mail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+      const res = await axios.post("/api/send-mail", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       setIsSending(false);
       if (res.status !== 200) throw new Error("Failed");
