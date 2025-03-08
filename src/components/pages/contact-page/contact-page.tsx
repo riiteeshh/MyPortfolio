@@ -23,25 +23,28 @@ export default function ContactForm() {
     e.preventDefault();
     try {
       setIsSending(true);
+      console.log(process.env.NEXT_PUBLIC_ELASTICEMAIL_API_KEY);
+      console.log(process.env.NEXT_PUBLIC_FROM);
+      console.log(process.env.NEXT_PUBLIC_EMAIL);
+
       const res = await fetch("/api/send-mail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       setIsSending(false);
-      if (res.status !== 200) throw new Error("Failed")
-        toast.success("Email sent successfully")
+      if (res.status !== 200) throw new Error("Failed");
+      toast.success("Email sent successfully");
 
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-        });
-    } catch(error:unknown) {
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error: unknown) {
       setIsSending(false);
-      toast.error("Some eror occured while sending email",error?error:"")
-
+      toast.error("Some eror occured while sending email", error ? error : "");
     } finally {
       setIsSending(false);
     }
