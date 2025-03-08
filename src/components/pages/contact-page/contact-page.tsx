@@ -38,9 +38,9 @@ export default function ContactForm() {
           subject: "",
           message: "",
         });
-    } catch {
+    } catch(error:unknown) {
       setIsSending(false);
-      toast.error("Some eror occured while sending email")
+      toast.error("Some eror occured while sending email",error?error:"")
 
     } finally {
       setIsSending(false);
