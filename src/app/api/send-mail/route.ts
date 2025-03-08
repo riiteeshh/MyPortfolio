@@ -39,6 +39,7 @@ export async function POST(req: Request) {
     const result = await response.json();
 
     if (!result.success) {
+      console.log(result.error)
       throw new Error(result.error || 'Failed to send email');
     }
 
@@ -46,7 +47,8 @@ export async function POST(req: Request) {
       { message: "Message sent successfully!" },
       { status: 200 }
     );
-  } catch {
+  } catch(e:unknown) {
+    console.log(e?e:"")
     return NextResponse.json(
       { message: "Failed to send email." },
       { status: 500 }
