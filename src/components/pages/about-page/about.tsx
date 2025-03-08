@@ -1,8 +1,10 @@
 "use client";
 
+import { Card } from "@/components/ui/card";
 import { useState } from "react";
 
 export default function AboutPage() {
+  const [educationHoverIndex, setEducationHoverIndex] = useState(-1);
   const [educationData] = useState([
     {
       id: 1,
@@ -27,6 +29,37 @@ export default function AboutPage() {
     },
   ]);
 
+
+  const [experienceData] = useState([
+    {
+      id: 1,
+      year: "2022",
+      title: "Flutter Developer Intern",
+      institution: "CREATORS TECH",
+      period: "Dec 2022 - Jan 2023",
+    },
+    {
+      id: 2,
+      year: "2023",
+      title: "Software Engineer Intern",
+      institution: "LIS NEPAL",
+      period: "Oct 2023 - Jan 2024",
+    },
+    {
+      id: 3,
+      year: "2024",
+      title: "ASSOCIATE SOFTWARE ENGINEER",
+      institution: "LIS NEPAL",
+      period: "Jan 2024 - Jan 2025",
+    },
+    {
+      id: 4,
+      year: "2025",
+      title: "Software Engineer I",
+      institution: "LIS NEPAL",
+      period: "Jan 2025 - Present",
+    },
+  ])
   return (
     <div className="min-h-screen bg-black text-white py-16 px-4">
       <h1 className="text-4xl md:text-4xl font-bold text-center mb-4">
@@ -66,7 +99,13 @@ export default function AboutPage() {
               <div key={item.id} className="relative">
                 {/* Year marker with dot */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-                  <div className="w-4 h-4 bg-white rounded-full border-4 border-red-500 z-10"></div>
+                  <div
+                    className={`w-4 h-4  rounded-full border-4 z-10 ${
+                      educationHoverIndex === item.id
+                        ? "border-white bg-red-500 transition-all animate-pulse"
+                        : "bg-white border-red-500 transition-all"
+                    }`}
+                  ></div>
                 </div>
 
                 {/* Content */}
@@ -75,9 +114,14 @@ export default function AboutPage() {
                     item.side === "left" ? "md:text-right" : ""
                   }`}
                 >
-                  {/* Left side content */}
                   {
                     <div
+                      onMouseEnter={() => {
+                        setEducationHoverIndex(item.id);
+                      }}
+                      onMouseLeave={() => {
+                        setEducationHoverIndex(-1);
+                      }}
                       className={`group ${
                         item.side === "left"
                           ? "md:pr-16 md:ml-auto"
@@ -95,8 +139,6 @@ export default function AboutPage() {
                       </div>
                     </div>
                   }
-
-                  {/* Empty column for spacing */}
                   <div
                     className={`${item.side === "left" ? "md:order-last" : ""}`}
                   ></div>
@@ -106,6 +148,44 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+
+      <div className="container mx-auto max-w-5xl mt-20">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-10">
+          EXPERIENCE
+        </h1>
+  
+       <div className=" grid grid-cols-1 md:grid-cols-2 gap-x-50 gap-y-25 pl-24 md:pl-35">
+         {experienceData.map((item) => (
+           <div key={item.id} className="group relative">
+             {/* Large year as the main visual element - now in front with z-index */}
+             <div className= "transition-all group-hover:text-red-500 group-hover:scale-110 absolute left-[-180px] top-1/2 -translate-y-1/2 text-[100px] font-bold text-white opacity-40 group-hover:opacity-90 leading-none z-20">
+               {item.year}
+               {item.period && <p className="text-sm text-gray-400 mb-4">{item.period}</p>}
+
+             </div>
+ 
+             {/* Card */}
+             <Card className="bg-zinc-900 text-white p-6 justify-end items-end  rounded-none shadow-xl border-0 w-full z-10 relative py-15">
+               <h3 className="text-2xl font-bold mb-1 text-end">{item.title}</h3>
+               <p className="text-xl text-red-500 mb-4 font-bold">{item.institution}</p>
+ 
+ 
+               {/* {item.technologies && item.technologies.length > 0 && (
+                 <div className="space-y-1">
+                   {item.technologies.map((tech, techIndex) => (
+                     <p key={techIndex} className="text-gray-400">
+                       {tech}
+                     </p>
+                   ))}
+                 </div>
+               )} */}
+             </Card>
+           </div>
+         ))}
+       </div>
+</div>
+
+
     </div>
   );
 }
