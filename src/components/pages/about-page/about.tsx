@@ -80,6 +80,18 @@ export default function AboutPage() {
         "Involvement on PR reviews and peer reviews of code",
       ],
     },
+{
+      id: 5,
+      year: "2025",
+      title: "Software Engineer I",
+      institution: "Ycotek",
+      period: "Jan 2025 - Present",
+      works: [
+        "Developing web application using Nextjs",
+        " Collaborating for developing AI based project",
+        "Involvement on PR reviews and peer reviews of code",
+      ],
+    },
   ]);
   return (
     <div className="min-h-screen bg-black text-white py-16 px-4">
