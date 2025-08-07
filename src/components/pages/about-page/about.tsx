@@ -85,11 +85,24 @@ export default function AboutPage() {
       year: "2025",
       title: "Software Engineer I",
       institution: "Ycotek",
-      period: "Jan 2025 - Present",
+      period: "Jan 2025 - July 2025",
       works: [
         "Developing web application using Nextjs",
         " Collaborating for developing AI based project",
         "Involvement on PR reviews and peer reviews of code",
+      ],
+    },
+    {
+      id: 6,
+      year: "2025",
+      title: "Senior Software Engineer",
+      institution: "Ycotek",
+      period: "July 2025 - Present",
+      works: [
+        "Developing AI-powered chat system for retail applications using Next.js",
+"Conducting comprehensive code reviews to maintain high coding standards",
+"Supervising and mentoring junior developers, providing technical guidance on coding standards",
+"Designing scalable frontend solutions that seamlessly integrated with AI services to deliver real-time conversational experiences",
       ],
     },
   ]);
