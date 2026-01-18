@@ -117,7 +117,7 @@ export default function AboutPage() {
           <span className="font-bold  text-red-500 group-hover:animate-pulse">
             Ritesh Pandey
           </span>
-          , currently working at LIS Nepal and I am a passionate web and mobile app developer. I have
+          , currently working at Ycotek Nepal and I am a passionate web and mobile app developer. I have
           experience in building high-quality applications using modern
           technologies such as
           <span className="font-semibold">
