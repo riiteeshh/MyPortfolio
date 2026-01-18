@@ -73,7 +73,7 @@ export default function AboutPage() {
       year: "2025",
       title: "Software Engineer I",
       institution: "LIS NEPAL",
-      period: "Jan 2025 - Present",
+      period: "Jan 2025 - July 2025",
       works: [
         "Developing web application using Nextjs",
         " Collaborating for developing AI based project",
