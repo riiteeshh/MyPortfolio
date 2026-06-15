@@ -86,7 +86,7 @@ const projects: Project[] = [
   },
 ];
 
-function FlipCard({ project, index }: { project: Project; index: number }) {
+function FlipCard({ project }: { project: Project; index?: number }) {
   const [flipped, setFlipped] = useState(false);
 
   return (
