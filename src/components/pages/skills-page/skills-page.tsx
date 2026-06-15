@@ -27,6 +27,7 @@ export default function SkillPage() {
     { src: "/images/confluence.svg", name: "Confluence" },
     { src: "/images/linux.svg", name: "Linux" },
     { src: "/images/vs-code.svg", name: "VS Code" },
+    { src: "/images/llm.svg", name: "LLM" },
   ];
   function delay(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));

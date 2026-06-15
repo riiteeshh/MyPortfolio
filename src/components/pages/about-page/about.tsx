@@ -127,7 +127,12 @@ export default function AboutPage() {
           . Throughout my career, I have worked on developing both mobile and
           web applications, ensuring seamless user experiences and efficient
           performance. I enjoy transforming ideas into functional and visually
-          appealing digital solutions.
+          appealing digital solutions. Currently deepening my knowledge in{" "}
+          <span className="font-semibold">LangChain and LangGraph</span> for
+          building agentic AI workflows, and exploring{" "}
+          <span className="font-semibold">ontology</span> — understanding how
+          structured knowledge representation helps businesses build smarter,
+          context-aware AI systems.
         </p>
       </div>
 

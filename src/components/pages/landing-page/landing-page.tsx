@@ -136,6 +136,7 @@ export default function LandingPage() {
       {/* Projects Button */}
       <div className="relative">
         <Button
+          onClick={() => router.push("/projects")}
           variant="ghost"
           className="transition-all duration-300 absolute left-1/2 transform -translate-x-1/2 -rotate-90 hover:bg-transparent p-0 m-0"
         >
