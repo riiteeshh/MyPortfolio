@@ -38,7 +38,7 @@ const projects: Project[] = [
     description:
       "An inventory management system for a mobile retail business. Handles stock tracking, product cataloguing, sales recording, and low-stock alerts.",
     tech: ["Flutter", "Dart", "SQLite", "Firebase"],
-    liveUrl: "https://mobizilla-inventory-app.vercel.app/",
+    liveUrl: "https://mobisoft-inventory-app.vercel.app/",
     status: "completed",
   },
   {
