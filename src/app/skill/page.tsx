@@ -1,10 +1,5 @@
-import SkillPage from "@/components/pages/skills-page/skills-page";
-import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-    title: "Skills",
-    description: "My skills",
-  };
-export default function Skills(){
-    return <SkillPage/>
+export default function Skills() {
+  redirect("/#experience");
 }
