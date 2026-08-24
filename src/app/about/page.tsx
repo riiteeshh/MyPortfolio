@@ -1,10 +1,5 @@
-import AboutPage from "@/components/pages/about-page/about";
-import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-    title: "About",
-    description: "About Me",
-  };
-export default function About(){
-    return <AboutPage/>
+export default function About() {
+  redirect("/#about");
 }
