@@ -46,7 +46,7 @@ export function Contact() {
           <SectionHeading
             eyebrow="Contact"
             title="Let's get in touch"
-            description="For graduate programs, research, roles, or just to talk about RAG and knowledge graphs."
+            description=""
           />
         </Reveal>
 
