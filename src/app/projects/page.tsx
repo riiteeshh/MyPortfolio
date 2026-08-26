@@ -5,6 +5,7 @@ import { GithubIcon } from "@/components/icons";
 import { Container, SectionHeading } from "@/components/section-container";
 import { Card } from "@/components/ui/card";
 import { Reveal } from "@/components/reveal";
+import { ProjectStatusBadge } from "@/components/project-status-badge";
 import { FEATURED_PROJECTS, OTHER_PROJECTS } from "@/lib/data/projects";
 
 export const metadata: Metadata = {
@@ -35,8 +36,9 @@ export default function ProjectsPage() {
                   <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                     {project.category} · {project.year}
                   </p>
-                  <h2 className="mt-1 text-xl font-semibold text-foreground">
+                  <h2 className="mt-1 flex items-center gap-2 text-xl font-semibold text-foreground">
                     {project.title}
+                    <ProjectStatusBadge status={project.status} />
                   </h2>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
@@ -95,9 +97,13 @@ export default function ProjectsPage() {
           </h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
             {OTHER_PROJECTS.map((project, i) => (
-              <Reveal key={project.slug} delay={Math.min(i, 4) * 70} className="rounded-lg border border-border p-5 transition-transform duration-300 hover:-translate-y-0.5">
+              <Reveal key={project.slug} delay={Math.min(i, 4) * 70}>
+              <Card className="p-5 transition-transform duration-300 hover:-translate-y-0.5">
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-medium text-foreground">{project.title}</h3>
+                  <h3 className="flex items-center gap-2 font-medium text-foreground">
+                    {project.title}
+                    <ProjectStatusBadge status={project.status} />
+                  </h3>
                   <div className="flex items-center gap-3 text-sm text-muted-foreground">
                     {project.github && (
                       <a
@@ -141,9 +147,7 @@ export default function ProjectsPage() {
                     {project.privateNote}
                   </p>
                 )}
-                {project.status === "in-progress" && (
-                  <p className="mt-2 text-xs text-brand">In progress</p>
-                )}
+              </Card>
               </Reveal>
             ))}
           </div>

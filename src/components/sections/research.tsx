@@ -4,7 +4,7 @@ import { RESEARCH_INTERESTS, EXPLORING } from "@/lib/data/interests";
 
 export function Research() {
   return (
-    <section id="research" className="border-b border-border/60 py-16 md:py-24">
+    <section id="research" className="border-b border-border/60 bg-accent/40 py-16 md:py-24">
       <Container>
         <Reveal>
           <SectionHeading

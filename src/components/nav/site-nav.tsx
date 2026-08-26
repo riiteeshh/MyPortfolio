@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,9 +18,61 @@ const NAV_LINKS = [
   { label: "Contact", href: "/#contact" },
 ];
 
+// Maps in-page section ids to the nav link they should activate. "work" (the
+// Featured projects section) maps to the /projects route link since there's
+// no standalone nav anchor for it.
+const SECTION_TO_NAV_HREF: Record<string, string> = {
+  about: "/#about",
+  path: "/#path",
+  work: "/projects",
+  experience: "/#experience",
+  research: "/#research",
+  contact: "/#contact",
+};
+
+function useActiveNavHref(pathname: string) {
+  const [activeHref, setActiveHref] = useState<string | null>(null);
+  const [trackedPathname, setTrackedPathname] = useState(pathname);
+
+  if (pathname !== trackedPathname) {
+    setTrackedPathname(pathname);
+    setActiveHref(null);
+  }
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const sections = Object.keys(SECTION_TO_NAV_HREF)
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const topMost = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (topMost) setActiveHref(SECTION_TO_NAV_HREF[topMost.target.id]);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
+    );
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  return activeHref;
+}
+
 export function SiteNav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const activeHref = useActiveNavHref(pathname);
+
+  const isLinkActive = (href: string) =>
+    href === "/projects"
+      ? pathname.startsWith("/projects") || activeHref === "/projects"
+      : href === activeHref;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -52,15 +105,23 @@ export function SiteNav() {
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="relative text-sm text-muted-foreground transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-foreground after:transition-transform after:duration-300 hover:text-foreground hover:after:scale-x-100"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const active = isLinkActive(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? "page" : undefined}
+                className={`relative text-sm transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:bg-foreground after:transition-transform after:duration-300 hover:text-foreground hover:after:scale-x-100 ${
+                  active
+                    ? "text-foreground after:scale-x-100"
+                    : "text-muted-foreground after:scale-x-0"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
@@ -88,18 +149,28 @@ export function SiteNav() {
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Mobile" className="border-t border-border/60 md:hidden">
+        <nav
+          id="mobile-nav"
+          aria-label="Mobile"
+          className="motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-top-2 motion-safe:duration-200 border-t border-border/60 md:hidden"
+        >
           <div className="mx-auto flex max-w-4xl flex-col gap-1 px-6 py-4">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-md px-2 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const active = isLinkActive(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={active ? "page" : undefined}
+                  className={`rounded-md px-2 py-2.5 text-sm transition-colors hover:bg-accent hover:text-foreground ${
+                    active ? "bg-accent text-foreground" : "text-muted-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <a
               href={SITE.resumeUrl}
               target="_blank"
