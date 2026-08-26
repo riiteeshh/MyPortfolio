@@ -1,10 +1,9 @@
 import { Container, SectionHeading } from "@/components/section-container";
 import { Reveal } from "@/components/reveal";
-import { EDUCATION } from "@/lib/data/education";
 
 export function About() {
   return (
-    <section id="about" className="border-b border-border/60 py-16 md:py-24">
+    <section id="about" className="border-b border-border/60 bg-accent/40 py-16 md:py-24">
       <Container>
         <Reveal>
           <SectionHeading eyebrow="About" title="Who I am" />

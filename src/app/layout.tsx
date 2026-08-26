@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteNav } from "@/components/nav/site-nav";
 import { SiteFooter } from "@/components/nav/site-footer";
+import { RouteTransition } from "@/components/route-transition";
 import { SITE } from "@/lib/data/site";
 
 const geistSans = Geist({
@@ -81,7 +82,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SiteNav />
-          <main>{children}</main>
+          <main>
+            <RouteTransition>{children}</RouteTransition>
+          </main>
           <SiteFooter />
         </ThemeProvider>
         <SpeedInsights />

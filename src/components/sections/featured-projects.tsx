@@ -4,11 +4,12 @@ import { GithubIcon } from "@/components/icons";
 import { Container, SectionHeading } from "@/components/section-container";
 import { Card } from "@/components/ui/card";
 import { Reveal } from "@/components/reveal";
+import { ProjectStatusBadge } from "@/components/project-status-badge";
 import { FEATURED_PROJECTS } from "@/lib/data/projects";
 
 export function FeaturedProjects() {
   return (
-    <section id="work" className="border-b border-border/60 py-16 md:py-24">
+    <section id="work" className="border-b border-border/60 bg-accent/40 py-16 md:py-24">
       <Container>
         <Reveal>
           <SectionHeading
@@ -27,8 +28,9 @@ export function FeaturedProjects() {
                   <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                     {project.category} · {project.year}
                   </p>
-                  <h3 className="mt-1 text-xl font-semibold text-foreground">
+                  <h3 className="mt-1 flex items-center gap-2 text-xl font-semibold text-foreground">
                     {project.title}
+                    <ProjectStatusBadge status={project.status} />
                   </h3>
                 </div>
                 <div className="flex items-center gap-3 text-sm">

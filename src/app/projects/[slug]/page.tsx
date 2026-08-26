@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { GithubIcon } from "@/components/icons";
 import { Container } from "@/components/section-container";
+import { ProjectStatusBadge } from "@/components/project-status-badge";
 import { FEATURED_PROJECTS, getProjectBySlug } from "@/lib/data/projects";
 
 export function generateStaticParams() {
@@ -49,8 +50,9 @@ export default async function ProjectCaseStudy({
         <p className="mt-6 text-xs font-medium uppercase tracking-wide text-muted-foreground">
           {project.category} · {project.year}
         </p>
-        <h1 className="mt-1 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+        <h1 className="mt-1 flex flex-wrap items-center gap-3 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
           {project.title}
+          <ProjectStatusBadge status={project.status} />
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground">{project.summary}</p>
 

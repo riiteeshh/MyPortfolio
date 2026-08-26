@@ -5,7 +5,7 @@ import { ACHIEVEMENTS } from "@/lib/data/achievements";
 
 export function Achievements() {
   return (
-    <section className="border-b border-border/60 py-16 md:py-24">
+    <section className="border-b border-border/60 bg-accent/40 py-16 md:py-24">
       <Container>
         <Reveal>
           <SectionHeading eyebrow="Recognition" title="Achievements" />
@@ -13,8 +13,18 @@ export function Achievements() {
 
         <div className="space-y-6">
           {ACHIEVEMENTS.map((item, i) => (
-            <Reveal key={item.title} delay={i * 100} className="flex gap-4">
-              <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-accent text-brand">
+            <Reveal
+              key={item.title}
+              delay={i * 100}
+              className={`group flex gap-4 transition-transform duration-300 ${
+                item.url ? "hover:-translate-y-0.5" : ""
+              }`}
+            >
+              <span
+                className={`mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-accent text-brand transition-colors duration-300 ${
+                  item.url ? "group-hover:bg-brand group-hover:text-brand-foreground" : ""
+                }`}
+              >
                 <Award className="size-4" />
               </span>
               <div>

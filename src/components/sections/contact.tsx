@@ -46,7 +46,7 @@ export function Contact() {
           <SectionHeading
             eyebrow="Contact"
             title="Let's get in touch"
-            description=""
+            description="Open to conversations about conversational AI, agentic systems, or roles where that work happens."
           />
         </Reveal>
 
