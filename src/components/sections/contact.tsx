@@ -51,12 +51,17 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={100} className="grid gap-10 md:grid-cols-2">
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form
+            onSubmit={handleSubmit}
+            aria-label="Contact form"
+            className="space-y-4"
+          >
             <div className="grid gap-4 sm:grid-cols-2">
               <input
                 type="text"
                 name="name"
                 placeholder="Your name"
+                aria-label="Your name"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -66,6 +71,7 @@ export function Contact() {
                 type="email"
                 name="email"
                 placeholder="Your email"
+                aria-label="Your email"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -76,6 +82,7 @@ export function Contact() {
               type="text"
               name="subject"
               placeholder="Subject"
+              aria-label="Subject"
               value={formData.subject}
               onChange={handleChange}
               required
@@ -84,6 +91,7 @@ export function Contact() {
             <textarea
               name="message"
               placeholder="Message"
+              aria-label="Message"
               value={formData.message}
               onChange={handleChange}
               required

@@ -3,7 +3,7 @@ export const SITE = {
   role: "Software Engineer, AI Enthusiast",
   tagline:
     "I build software systems, and more recently conversational AI and agentic systems. My background is in computer engineering, mobile and frontend development, backend systems, and databases.",
-  location: "Lalitpur, Nepal",
+  location: "Kathmandu, Nepal",
   email: "pandeyritesh048@gmail.com",
   github: "https://github.com/riiteeshh",
   linkedin: "https://www.linkedin.com/in/riteshpandey47",

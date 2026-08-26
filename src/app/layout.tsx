@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.domain),
   title: TITLE,
   description: DESCRIPTION,
+  alternates: { canonical: "/" },
   icons: { icon: "/favicon.ico" },
   openGraph: {
     title: TITLE,
@@ -36,13 +37,25 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
   },
   verification: {
     google: "X2y5WnVb6HVAzQCznZqiLnNOW1-_0phqzn2rOf9IXmE",
   },
+};
+
+const PERSON_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: SITE.name,
+  jobTitle: SITE.role,
+  description: SITE.tagline,
+  url: SITE.domain,
+  email: `mailto:${SITE.email}`,
+  address: { "@type": "PostalAddress", addressLocality: SITE.location },
+  sameAs: [SITE.github, SITE.linkedin],
 };
 
 export default function RootLayout({
@@ -52,6 +65,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_JSON_LD) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

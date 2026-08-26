@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "Featured and other projects by Ritesh Pandey, from a KEC award-winning anti-theft system to conversational AI work at Ycotek.",
+  alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {

@@ -51,7 +51,7 @@ export function SiteNav() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -79,6 +79,7 @@ export function SiteNav() {
             size="icon"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
+            aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -87,7 +88,7 @@ export function SiteNav() {
       </div>
 
       {open && (
-        <nav className="border-t border-border/60 md:hidden">
+        <nav id="mobile-nav" aria-label="Mobile" className="border-t border-border/60 md:hidden">
           <div className="mx-auto flex max-w-4xl flex-col gap-1 px-6 py-4">
             {NAV_LINKS.map((link) => (
               <Link
